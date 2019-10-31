@@ -1,7 +1,8 @@
 import '../styles/main.scss';
+import authData from './helpers/data/authData';
 
 const init = () => {
-  console.error('hi');
+  authData.checkLoginStatus();
 };
 
 init();
