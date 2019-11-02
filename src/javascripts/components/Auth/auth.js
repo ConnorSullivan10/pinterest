@@ -16,7 +16,7 @@ const loginButton = () => {
 </button>`;
 
   utilities.printToDom('auth', domString);
-  $('google-auth').click(signMeIn);
+  $('#google-auth').click(signMeIn);
 };
 
 export default { loginButton };
