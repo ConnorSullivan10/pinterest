@@ -11,9 +11,9 @@ This application is the foundation for a Pinterest-like application that we will
 
 ## Screenshots
 
-![Pinterest Preview 1]()
+![Pinterest Preview 1](https://raw.githubusercontent.com/ConnorSullivan10/pinterest/master/screenshots/pinterestPreview1.PNG)
 
-![Pinterest Preview 2]()
+![Pinterest Preview 2](https://raw.githubusercontent.com/ConnorSullivan10/pinterest/master/screenshots/pinterestPreview2.PNG)
 
 ## How to run
 1. Clone down this project.
