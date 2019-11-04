@@ -17,6 +17,7 @@ const init = () => {
   myNavbar.logoutEvent();
   home.homeComponent();
   boards.boardsComponent();
+  boards.createBoard();
 };
 
 init();

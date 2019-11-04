@@ -1,5 +1,6 @@
 import './boards.scss';
-// import utilities from '../../helpers/utilities';
+import utilities from '../../helpers/utilities';
+import boardData from '../../helpers/data/boardData';
 
 // const boardsComponent = () => {
 //   const domString = '<h1>Boards</h1>';
@@ -7,18 +8,26 @@ import './boards.scss';
 //   utilities.printToDom('boards', domString);
 // };
 
-
-const boardsComponent = (board) => {
+const boardsComponent = () => {
   let domString = '<h1>BOARDS</h1>';
-  domString += `
-      <div class="card col-4 pinCard" id="${board.id}>
-        <img src= class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">${board.name}</h5>
-          <p>${board.boardDescription}
-        </div>
-      </div>`;
-  return domString;
+  domString += '<div id="board-container" class="d-flex flex-wrap">';
+  utilities.printToDom('boards', domString);
 };
 
-export default { boardsComponent };
+const createBoard = () => {
+  let domString = '';
+  const boards = boardData.getBoardByUid();
+  boards.forEach((board) => {
+    domString += `
+        <div class="card col-4 boardCard" id="${board.id}>
+          <img src= class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">${board.name}</h5>
+            <p>${board.boardDescription}
+          </div>
+        </div>`;
+    utilities.printToDom('board-container', domString);
+  });
+};
+
+export default { boardsComponent, createBoard };
