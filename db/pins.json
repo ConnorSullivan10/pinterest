@@ -1,0 +1,50 @@
+{
+  "pin1": {
+    "id": "pin1",
+    "name": "Gibson ES-336",
+    "imageURL": "https://cdn.shopify.com/s/files/1/0975/2962/products/image_b8128d04-ab3a-4475-8cf1-1f4683d4d5ee_2048x.jpg?v=1542905932",
+    "siteURL": "https://jimmywallaceguitars.com/products/gibson-es-336",
+    "description" : "Beautiful Sunburst ES 336 from the Gibson Custom Shop. Smaller, more comfortable version of the venerable 335. Compact package with all the classic semi-hollow body sound! ",
+    "boardID" : "board1"
+  },
+  "pin2": {
+    "id": "pin2",
+    "name": "Collings I-35 LC",
+    "imageURL": "https://eddiesguitars.com/media/catalog/product/cache/1/thumbnail/1200x/17f82f742ffe127f42dca9de82fb58b1/c/o/collings_1_001.jpg",
+    "siteURL": "https://eddiesguitars.com/electric-guitars/electric-guitar-brands/collings-i-35-lc-deluxe-aged-pelham-blue-10265",
+    "description" : "The Collings I-35 LC Deluxe guitar brings you the most premium features a laminate wood construction body guitar can have for a rich and harmonic tone. Built with the best tonewoods, high quality electronics, hardware, and appointments, this guitar is uncompromising and perfect for the discerning electric guitarist.",
+    "boardID" : "board1"
+  },
+  "pin3": {
+    "id": "pin3",
+    "name": "Port City Pearl",
+    "imageURL": "https://portcityamps.com/wp-content/uploads/2018/08/Pearl-head-1x12OS-Front.jpg",
+    "siteURL": "https://portcityamps.com/product/pearl-head/",
+    "description" : "With a simple set of useful controls, a single master volume, and 50 or 100 watts of clean headroom, the Pearl Combo is an incredibly versatile amplifier designed to lay a rich tonal foundation for every type of guitarist. We are now offering the 5th version of the Pearl.",
+    "boardID" : "board2"
+  },
+  "pin4": {
+    "id": "pin4",
+    "name": "Bogner Helios",
+    "imageURL": "http://www.mattsmusic.com/mm5/graphics/00000001/helios_476x550.jpg",
+    "siteURL": "http://www.mattsmusic.com/HELIOS100-prod.html",
+    "description" : "Truly a sonic time machine, HELIOS features hand-wired turret board construction with two foot switchable channels and foot switchable FX loop/boost. Available as 50 or 100 watts with EL34 power tubes.",
+    "boardID" : "board2"
+  },
+  "pin5": {
+    "id": "pin5",
+    "name": "Source Audio Collider",
+    "imageURL": "https://www.sourceaudio.net/uploads/1/1/5/1/115104065/productpage-colliderfront_orig.png",
+    "siteURL": "https://www.sourceaudio.net/collider_delay_reverb.html",
+    "description" : "Design complex soundscapes in seconds with the Collider Delay+Reverb. We hand-picked 12 standout delay and reverb effects from our award winning Nemesis Delay and Ventris Dual Reverb, and put them together in one compact housing with massive power and dead simple control. The Collider’s intuitive control surface makes it easy to mix-and-match any two-engine combination of delay and reverb.",
+    "boardID" : "board3"
+  },
+  "pin6": {
+    "id": "pin6",
+    "name": "Earthquaker Audio Rainbow Machine",
+    "imageURL": "https://d2wclktjr2mmlu.cloudfront.net/media/catalog/product/cache/287ac709c40991e1905883c7a1aa3f88/e/a/earthquakerdevices_rainbowmachinev2_01.jpg",
+    "siteURL": "https://www.perfectcircuit.com/earthquaker-devices-rainbow-machine-v2.html",
+    "description" : "From its characteristic sound to its idiosyncratic enclosure, this is a pedal that commands attention in all the right ways. At its core, this polyphonic harmonizing modulation powerhouse is a shoegazer’s dream.",
+    "boardID" : "board3"
+  }
+}
