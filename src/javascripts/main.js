@@ -5,6 +5,8 @@ import authData from './helpers/data/authData';
 import myNavbar from './components/MyNavbar/myNavbar';
 import home from './components/Home/home';
 import boards from './components/Boards/boards';
+import singleBoard from './components/SingleBoard/singleBoard';
+
 
 import apiKeys from './helpers/apiKeys.json';
 
@@ -17,7 +19,8 @@ const init = () => {
   myNavbar.logoutEvent();
   home.homeComponent();
   boards.boardsComponent();
-  boards.createBoard();
+  singleBoard.clickToPrintBigBoard();
+  singleBoard.closeBigBoard();
 };
 
 init();

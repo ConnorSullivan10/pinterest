@@ -1,20 +1,43 @@
-import axios from 'axios';
-import apiKeys from '../../helpers/apiKeys.json';
+import './singleBoard.scss';
+import utilities from '../../helpers/utilities';
+import boardPrinter from '../Boards/boards';
+import pinPrinter from '../Pins/pins';
+import boardData from '../../helpers/data/boardData';
 
-const baseUrl = apiKeys.firebaseKeys.databaseURL;
+const bigBoard = (singleBoard) => {
+  const boards = boardData.getBoardByUid();
+  let domString = '';
+  boards.forEach((board) => {
+    const boardName = board.name.toLowerCase();
+    if (singleBoard === `${board.id}`) {
+      domString += `
+      <div class="big-board-card Card text-center ${boardName}" id="bigBoard-${board.id}">
+         <button class="close d-flex justify-content-end" style="color:red;">X</button>
+         <h2>${board.name}</h2>
+         <h3>${board.boardDescription}</h3>
+         <div id="pinned-cards" class="d-flex flex-wrap"></div>'
+     </div>`;
+      utilities.printToDom('big-board-view', domString);
+      pinPrinter.makeAPin(board.id);
+    }
+  });
+};
 
-const getBoard = () => new Promise((resolve, reject) => {
-  axios.get(`${baseUrl}/boards.json`)
-    .then((response) => {
-      const demBoards = response.data;
-      const boards = [];
-      Object.keys(demBoards).forEach((fbId) => {
-        demBoards[fbId].id = fbId;
-        boards.push(demBoards[fbId]);
-      });
-      resolve(boards);// Hard code to return boards
-    })
-    .catch((error) => reject(error));
-});
+const clickToPrintBigBoard = () => {
+  $('.card-body').on('click', (event) => {
+    const singleBoard = event.target.id;
+    bigBoard(singleBoard);
+    utilities.printToDom('board-container', '');
+  });
+};
 
-export default { getBoard };
+const closeBigBoard = () => {
+  $('body').on('click', '.close', () => {
+    utilities.printToDom('big-board-view', '');
+    boardPrinter.boardsComponent();
+    boardPrinter.createBoard();
+    clickToPrintBigBoard();
+  });
+};
+
+export default { clickToPrintBigBoard, closeBigBoard };

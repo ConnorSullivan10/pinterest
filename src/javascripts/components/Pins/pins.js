@@ -1,11 +1,13 @@
 import './pins.scss';
+import utilities from '../../helpers/utilities';
 import pinData from '../../helpers/data/pinData';
 
-const makeAPin = () => {
+const makeAPin = (boardID) => {
+  const pins = pinData.getPinByBoardId(boardID);
   let domString = '';
-  const pins = pinData.getPinByBoardId();
   pins.forEach((pin) => {
-    domString += `
+    if (boardID === pin.boardID) {
+      domString += `
     <div class="card col-4 pinCard" id="${pin.id}>
       <img src=${pin.imageURL} class="card-img-top" alt="...">
       <div class="card-body">
@@ -13,8 +15,11 @@ const makeAPin = () => {
         <p>${pin.description}
       </div>
     </div>`;
-    return domString;
+    } else {
+      domString += '';
+    }
   });
+  utilities.printToDom('pinned-cards', domString);
 };
 
 export default { makeAPin };
