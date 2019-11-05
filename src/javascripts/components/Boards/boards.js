@@ -33,9 +33,8 @@ const createBoard = () => {
 };
 
 const boardsComponent = () => {
-  let domString = '<h1>BOARDS</h1>';
-  domString += '<div id="board-container" class="d-flex flex-wrap">';
-  domString += '<div id="big-board-view" class="d-flex flex-wrap"></div>';
+  let domString = '<h1>BOARDS</h1><br><div id="big-board-view" class="d-flex flex-wrap"></div>';
+  domString += '<div id="board-container" class="d-flex flex-wrap"></div>';
   utilities.printToDom('boards', domString);
   createBoard();
 };
