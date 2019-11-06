@@ -1,4 +1,5 @@
 import './singleBoard.scss';
+import $ from 'jquery';
 import utilities from '../../helpers/utilities';
 import boardPrinter from '../Boards/boards';
 import pinPrinter from '../Pins/pins';

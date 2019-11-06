@@ -2,6 +2,7 @@ import $ from 'jquery';
 import firebase from 'firebase/app';
 // ask Zoe about the difference between what these imports mean
 import 'firebase/auth';
+import boards from '../../components/Boards/boards';
 
 const authDiv = $('#auth');
 const boardsDiv = $('#boards');
@@ -15,6 +16,7 @@ const checkLoginStatus = () => {
       homeDiv.addClass('hide');
       boardsDiv.removeClass('hide');
       logoutNavbar.removeClass('hide');
+      boards.boardsComponent(user.uid);
     } else {
       authDiv.removeClass('hide');
       homeDiv.removeClass('hide');
