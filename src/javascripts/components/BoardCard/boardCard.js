@@ -1,3 +1,5 @@
+import './boardCard.scss';
+
 
 const createBoard = (board) => {
   let domString = '';

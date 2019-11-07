@@ -4,7 +4,6 @@ import auth from './components/Auth/auth';
 import authData from './helpers/data/authData';
 import myNavbar from './components/MyNavbar/myNavbar';
 import home from './components/Home/home';
-import singleBoard from './components/SingleBoard/singleBoard';
 
 
 import apiKeys from './helpers/apiKeys.json';
@@ -17,8 +16,6 @@ const init = () => {
   auth.loginButton();
   myNavbar.logoutEvent();
   home.homeComponent();
-  singleBoard.clickToPrintBigBoard();
-  singleBoard.closeBigBoard();
 };
 
 init();
