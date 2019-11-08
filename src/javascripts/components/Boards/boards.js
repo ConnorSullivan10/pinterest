@@ -1,10 +1,10 @@
-import firebase from 'firebase';
 import $ from 'jquery';
-import './boards.scss';
+import firebase from 'firebase';
 import utilities from '../../helpers/utilities';
 import boardData from '../../helpers/data/boardData';
 import boardCard from '../BoardCard/boardCard';
 import pinData from '../../helpers/data/pinData';
+import './boards.scss';
 
 // PRINTS MAIN BOARDS & EVENT LISTENER FOR BIG CARD
 const boardsComponent = (uid) => {
@@ -29,9 +29,10 @@ const boardsToHide = $('#boards');
 
 const printBigBoard = (event) => {
   const { uid } = firebase.auth().currentUser;
+  // SOMETHING WRONG WITH SINGLEBOARD OBJECT LITERAL. NOT BEING RECOGNIZED.
   const singleBoard = event.target.id;
   let bigBoardString = `<div class="big-board-title card text-center" id="${singleBoard}">
-    <h2>$(singleBoard)</h2><button class="close d-flex justify-content-end" style="color:black;">X</button>
+    <h2>${singleBoard}</h2><button class="close d-flex justify-content-end" style="color:black;">X</button>
     </div>`;
   bigBoardString += '<div id="pinned-cards" class="d-flex flex-wrap">';
   pinData.getPinByBoardId(singleBoard)
