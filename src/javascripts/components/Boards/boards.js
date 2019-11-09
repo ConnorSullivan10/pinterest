@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import firebase from 'firebase';
 import utilities from '../../helpers/utilities';
 import boardData from '../../helpers/data/boardData';
 import boardCard from '../BoardCard/boardCard';
@@ -16,11 +17,14 @@ const boardsComponent = (uid) => {
       domString += '<div id="board-container" class="d-flex flex-wrap">';
       boards.forEach((board) => {
         domString += boardCard.createBoard(board);
+        domString += `<button class="btn btn-danger delete-board" data-boardID="${board.id}" id="${board.id}">Remove Board</button>`;
       });
       domString += '</div>';
       utilities.printToDom('boards', domString);
       // eslint-disable-next-line no-use-before-define
       $('#boards').on('click', '.pin-button', printBigBoardByBoardClick);
+      // eslint-disable-next-line no-use-before-define
+      $('#boards').on('click', '.delete-board', deleteBoardAndPins);
       // eslint-disable-next-line no-use-before-define
       $('#big-board-view').on('click', '.delete-pin', deletePinFromBoard);
       $('#big-board-view').on('click', '.close', () => {
@@ -48,6 +52,18 @@ const deletePinFromBoard = (e) => {
     .catch((error) => console.error(error));
 };
 
+const deleteBoardAndPins = (e) => {
+  const { uid } = firebase.auth().currentUser;
+  e.preventDefault();
+  pinData.deletePinByBoardId(e.target.id);
+  boardData.deleteBoard(e.target.id)
+    .then(() => {
+    // eslint-disable-next-line no-use-before-define
+      console.log(e.target);
+      boardsComponent(uid);
+    })
+    .catch((error) => console.error(error));
+};
 
 // // PRINTS MAIN BOARDS AND BIG BOARDS (hidden)
 // const boardsComponent = (uid) => {
