@@ -3,10 +3,12 @@ import firebase from 'firebase';
 import utilities from '../../helpers/utilities';
 import boardData from '../../helpers/data/boardData';
 import boardCard from '../BoardCard/boardCard';
+import pinPrinter from '../Pins/pins';
 import pinData from '../../helpers/data/pinData';
+
 import './boards.scss';
 
-// PRINTS MAIN BOARDS & EVENT LISTENER FOR BIG CARD
+// PRINTS MAIN BOARDS & EVENT LISTENER FOR BIG CARD, DELETE-PIN BUTTON,
 const boardsComponent = (uid) => {
   boardData.getBoardByUid(uid)
     .then((boards) => {
@@ -15,45 +17,50 @@ const boardsComponent = (uid) => {
       domString += '<div id="board-container" class="d-flex flex-wrap">';
       boards.forEach((board) => {
         domString += boardCard.createBoard(board);
+        domString += `<button class="btn btn-danger delete-board" data-boardID="${board.id}" id="${board.id}">Remove Board</button>`;
       });
       domString += '</div>';
       utilities.printToDom('boards', domString);
       // eslint-disable-next-line no-use-before-define
-      $('#boards').on('click', '.pin-button', printBigBoard);
-    });
-};
-
-// PRINTS BIG CARD AND EVENT LISTENER FOR CLOSE BUTTON
-
-const boardsToHide = $('#boards');
-
-const printBigBoard = (event) => {
-  const { uid } = firebase.auth().currentUser;
-  // SOMETHING WRONG WITH SINGLEBOARD OBJECT LITERAL. NOT BEING RECOGNIZED.
-  const singleBoard = event.target.id;
-  let bigBoardString = `<div class="big-board-title card text-center" id="${singleBoard}">
-    <h2>${singleBoard}</h2><button class="close d-flex justify-content-end" style="color:black;">X</button>
-    </div>`;
-  bigBoardString += '<div id="pinned-cards" class="d-flex flex-wrap">';
-  pinData.getPinByBoardId(singleBoard)
-    .then((pins) => {
-      boardsToHide.empty();
-      pins.forEach((pin) => {
-        bigBoardString += `
-        <div class="card col-4 pinCard" id="${pin.id}">
-          <img src=${pin.imageURL} class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title" id="pin>${pin.name}</h5>
-            <p>${pin.description}
-          </div>
-        </div>`;
-      });
-      bigBoardString += '</div>';
-      utilities.printToDom('big-board-view', bigBoardString);
+      $('#boards').on('click', '.pin-button', printBigBoardByBoardClick);
+      // eslint-disable-next-line no-use-before-define
+      $('#boards').on('click', '.delete-board', deleteBoardAndPins);
+      // eslint-disable-next-line no-use-before-define
+      $('#big-board-view').on('click', '.delete-pin', deletePinFromBoard);
       $('#big-board-view').on('click', '.close', () => {
         $('#big-board-view').empty();
         boardsComponent(uid);
       });
+    });
+};
+
+// PRINTS BIG BOARD CARD BASED ON SELECTED BOARD
+
+const printBigBoardByBoardClick = (event) => {
+  const singleBoard = event.target.id;
+  pinPrinter.createPinsOnBoard(singleBoard);
+};
+
+const deletePinFromBoard = (e) => {
+  e.preventDefault();
+  pinData.deletePin(e.target.id)
+    .then(() => {
+    // eslint-disable-next-line no-use-before-define
+      console.log(e.target);
+      pinPrinter.createPinsOnBoard(e.target.dataset.boardid);
+    })
+    .catch((error) => console.error(error));
+};
+
+const deleteBoardAndPins = (e) => {
+  const { uid } = firebase.auth().currentUser;
+  e.preventDefault();
+  pinData.deletePinByBoardId(e.target.id);
+  boardData.deleteBoard(e.target.id)
+    .then(() => {
+    // eslint-disable-next-line no-use-before-define
+      console.log(e.target);
+      boardsComponent(uid);
     })
     .catch((error) => console.error(error));
 };
