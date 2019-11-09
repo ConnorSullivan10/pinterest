@@ -19,7 +19,7 @@ const boardsComponent = (uid) => {
       domString += '</div>';
       utilities.printToDom('boards', domString);
       // eslint-disable-next-line no-use-before-define
-      $('#boards').on('click', '.boardCard', printBigBoard);
+      $('#boards').on('click', '.pin-button', printBigBoard);
     });
 };
 
