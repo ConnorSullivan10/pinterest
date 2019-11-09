@@ -2,21 +2,21 @@
   "board1": {
     "id": "board1",
     "name": "Guitars",
-    "UID": "IUns3Fqzllf6Bu0JZGllgAfuQ4j2",
+    "uid": "IUns3Fqzllf6Bu0JZGllgAfuQ4j2",
     "isPrivate": true,
     "boardDescription" : "This board holds ideas for guitars to get."
   },
   "board2": {
     "id": "board2",
     "name": "Amps",
-    "UID": "IUns3Fqzllf6Bu0JZGllgAfuQ4j2",
+    "uid": "IUns3Fqzllf6Bu0JZGllgAfuQ4j2",
     "isPrivate": true,
     "boardDescription" : "This board holds ideas for guitar amplifiers to attain."
   },
   "board3": {
     "id": "board3",
     "name": "Pedals",
-    "UID": "IUns3Fqzllf6Bu0JZGllgAfuQ4j2",
+    "uid": "IUns3Fqzllf6Bu0JZGllgAfuQ4j2",
     "isPrivate": true,
     "boardDescription" : "This board holds ideas for new guitar pedals I'd like to try out."
   }
