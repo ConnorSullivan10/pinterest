@@ -1,5 +1,6 @@
 import $ from 'jquery';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 import utilities from '../../helpers/utilities';
 import boardData from '../../helpers/data/boardData';
 import boardCard from '../BoardCard/boardCard';
@@ -14,6 +15,9 @@ const boardsComponent = (uid) => {
     .then((boards) => {
       let domString = '';
       domString += '<h1>BOARDS</h1>';
+      domString += `<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Add Board
+    </button>`;
       domString += '<div id="board-container" class="d-flex flex-wrap">';
       boards.forEach((board) => {
         domString += boardCard.createBoard(board);
@@ -26,6 +30,8 @@ const boardsComponent = (uid) => {
       // eslint-disable-next-line no-use-before-define
       $('#boards').on('click', '.delete-board', deleteBoardAndPins);
       // eslint-disable-next-line no-use-before-define
+      $('#boards').on('click', '#add-new-board', addNewBoard);
+      // eslint-disable-next-line no-use-before-define
       $('#big-board-view').on('click', '.delete-pin', deletePinFromBoard);
       $('#big-board-view').on('click', '.close', () => {
         $('#big-board-view').empty();
@@ -34,6 +40,30 @@ const boardsComponent = (uid) => {
     });
 };
 
+// FUNCTION TO ADD NEW BOARD TO ARRAY FROM BOARDS.JSON
+
+let counter = 4;
+
+const addNewBoard = (e) => {
+  e.stopImmediatePropagation();
+  const { uid } = firebase.auth().currentUser;
+  const newBoard = {
+    id: `board${counter}`,
+    imageURL: $('#board-image-url').val(),
+    name: $('#board-name').val(),
+    uid,
+    isPrivate: true,
+    boardDescription: $('#board-description').val(),
+  };
+  counter += 1;
+  boardData.addNewBoard(newBoard)
+    .then(() => {
+      $('#exampleModal').modal('hide');
+      // eslint-disable-next-line no-use-before-define
+      boardsComponent(uid);
+    })
+    .catch((error) => console.error(error));
+};
 // PRINTS BIG BOARD CARD BASED ON SELECTED BOARD
 
 const printBigBoardByBoardClick = (event) => {

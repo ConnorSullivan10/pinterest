@@ -1,6 +1,7 @@
 {
   "board1": {
     "id": "board1",
+    "imageURL": "https://enmoreaudio.com/wp-content/uploads/2017/03/guitarcollection.jpg",
     "name": "Guitars",
     "uid": "IUns3Fqzllf6Bu0JZGllgAfuQ4j2",
     "isPrivate": true,
@@ -8,6 +9,7 @@
   },
   "board2": {
     "id": "board2",
+    "imageURL": "https://theguitarchannel.biz/wp-content/uploads/2019/01/NAMM-2019-Jour-2-5470-1024x768.jpg",
     "name": "Amps",
     "uid": "IUns3Fqzllf6Bu0JZGllgAfuQ4j2",
     "isPrivate": true,
@@ -15,6 +17,7 @@
   },
   "board3": {
     "id": "board3",
+    "imageURL": "http://sixstringsensei.com/wp-content/uploads/2011/07/guitar_pedal_board_built_960px.jpg",
     "name": "Pedals",
     "uid": "IUns3Fqzllf6Bu0JZGllgAfuQ4j2",
     "isPrivate": true,
