@@ -83,6 +83,14 @@ const deleteBoardAndPins = (e) => {
     .catch((error) => console.error(error));
 };
 
+// // REASSIGNS PINS TO NEW BOARD
+
+// const updatePinBoard = (e) => {
+//   const { uid } = firebase.auth().currentUser;
+//   const pinId = e.target.id.split('edit-')[1];
+//   const boardId = $('#inlineFormCustomSelect3').val();
+// };
+
 // PRINTS MAIN BOARDS & EVENT LISTENER FOR BIG CARD, DELETE-PIN BUTTON,
 const boardsComponent = (uid) => {
   boardData.getBoardByUid(uid)
@@ -108,6 +116,7 @@ const boardsComponent = (uid) => {
       // eslint-disable-next-line no-use-before-define
       $('#big-board-view').on('click', '.delete-pin', deletePinFromBoard);
       $(document.body).on('click', '#add-new-pin', addNewPin);
+      //  $('#big-board-view').on('click', '.dropdown-item', updatePinBoard);
       $('#big-board-view').on('click', '.close', () => {
         $('#big-board-view').empty();
         boardsComponent(uid);
