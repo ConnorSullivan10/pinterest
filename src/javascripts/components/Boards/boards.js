@@ -30,31 +30,26 @@ const addNewBoard = (e) => {
     .catch((error) => console.error(error));
 };
 
-// // FUNCTION TO ADD NEW PIN TO ARRAY FROM PINS.JSON
+// FUNCTION TO ADD NEW PIN TO ARRAY FROM PINS.JSON
 
-// let pinCounter = 7;
-
-// const addNewPin = (e) => {
-//   e.stopImmediatePropagation();
-//   const { uid } = firebase.auth().currentUser;
-//   const assignToBoard = $(e.target).parent().attr('id');
-//   const newPin = {
-//     id: `pin${pinCounter}`,
-//     name: $('#pin-name').val(),
-//     imageURL: $('#pin-image-url').val(),
-//     siteURL: $('#pin-site-url').val(),
-//     boardDescription: $('#pin-description').val(),
-//     boardID: `${assigntToBoard}`,
-//   };
-//   pinCounter += 1;
-//   pinData.addNewPin(newPin)
-//     .then(() => {
-//       $('#examplePinModal').modal('hide');
-//       // eslint-disable-next-line no-use-before-define
-//       boardsComponent(uid);
-//     })
-//     .catch((error) => console.error(error));
-// };
+const addNewPin = (e) => {
+  e.stopImmediatePropagation();
+  const assignToBoard = $('.big-board-title')[0].id;
+  const newPin = {
+    name: $('#pin-name').val(),
+    imageURL: $('#pin-image-url').val(),
+    siteURL: $('#pin-site-url').val(),
+    description: $('#pin-description').val(),
+    boardID: `${assignToBoard}`,
+  };
+  pinData.addNewPin(newPin)
+    .then(() => {
+      $('#examplePinModal').modal('hide');
+      // eslint-disable-next-line no-use-before-define
+      pinPrinter.createPinsOnBoard(assignToBoard);
+    })
+    .catch((error) => console.error(error));
+};
 
 // PRINTS BIG BOARD CARD BASED ON SELECTED BOARD
 
@@ -112,39 +107,12 @@ const boardsComponent = (uid) => {
       $(document.body).on('click', '#add-new-board', addNewBoard);
       // eslint-disable-next-line no-use-before-define
       $('#big-board-view').on('click', '.delete-pin', deletePinFromBoard);
-      // $('#boards').on('click', '#add-new-pin', addNewPin);
+      $(document.body).on('click', '#add-new-pin', addNewPin);
       $('#big-board-view').on('click', '.close', () => {
         $('#big-board-view').empty();
         boardsComponent(uid);
       });
     });
 };
-
-
-// // PRINTS MAIN BOARDS AND BIG BOARDS (hidden)
-// const boardsComponent = (uid) => {
-//   boardData.getBoardByUid(uid)
-//     .then((boards) => {
-//       let domString = '';
-//       let bigBoardString = '';
-//       domString += '<h1>BOARDS</h1><br><div id="big-board-view" class="d-flex flex-wrap"></div>';
-//       domString += '<div id="board-container" class="d-flex flex-wrap">';
-//       boards.forEach((board) => {
-//         const boardName = board.name.toLowerCase();
-//         domString += boardCard.createBoard(board);
-//         bigBoardString += `
-//             <div class="big-board-card Card text-center ${boardName}" id="bigBoard-${board.id}" style="display: none">
-//                 <button class="close d-flex justify-content-end" style="color:red;">X</button>
-//                 <h2>${board.name}</h2>
-//                 <h3>${board.boardDescription}</h3>
-//                 <div id="pinned-cards" class="d-flex flex-wrap"></div>
-//                 </div>`;
-//       });
-//       domString += '</div>';
-//       utilities.printToDom('boards', domString);
-//       utilities.printToDom('big-board-view', bigBoardString);
-//       // pin.makeAPin(board.id);
-//     });
-// };
 
 export default { boardsComponent };
