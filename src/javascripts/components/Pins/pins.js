@@ -6,13 +6,14 @@ import pinData from '../../helpers/data/pinData';
 const boardsToHide = $('#boards');
 
 const createPinsOnBoard = (singleBoard) => {
-  let bigBoardString = `<div class="big-board-title card text-center" id="big-${singleBoard}">
+  let bigBoardString = `
+    <div class="big-board-title card text-center" id="${singleBoard}">
         <h2>${singleBoard}</h2>
+        <button class="close d-flex justify-content-end" style="color:black;">X</button>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#examplePinModal">
           Add Pin
         </button>
-        <button class="close d-flex justify-content-end" style="color:black;">X</button>
-      </div>`;
+    </div>`;
   bigBoardString += '<div id="pinned-cards" class="d-flex flex-wrap">';
   pinData.getPinByBoardId(singleBoard)
     .then((pins) => {

@@ -9,30 +9,30 @@ import pinData from '../../helpers/data/pinData';
 import './boards.scss';
 
 
-// FUNCTION TO ADD NEW BOARD TO ARRAY FROM BOARDS.JSON
+// // FUNCTION TO ADD NEW BOARD TO ARRAY FROM BOARDS.JSON
 
-let counter = 4;
+// let counter = 4;
 
-const addNewBoard = (e) => {
-  e.stopImmediatePropagation();
-  const { uid } = firebase.auth().currentUser;
-  const newBoard = {
-    id: `board${counter}`,
-    imageURL: $('#board-image-url').val(),
-    name: $('#board-name').val(),
-    uid,
-    isPrivate: true,
-    boardDescription: $('#board-description').val(),
-  };
-  counter += 1;
-  boardData.addNewBoard(newBoard)
-    .then(() => {
-      $('#exampleModal').modal('hide');
-      // eslint-disable-next-line no-use-before-define
-      boardsComponent(uid);
-    })
-    .catch((error) => console.error(error));
-};
+// const addNewBoard = (e) => {
+//   e.stopImmediatePropagation();
+//   const { uid } = firebase.auth().currentUser;
+//   const newBoard = {
+//     id: `board${counter}`,
+//     imageURL: $('#board-image-url').val(),
+//     name: $('#board-name').val(),
+//     uid,
+//     isPrivate: true,
+//     boardDescription: $('#board-description').val(),
+//   };
+//   counter += 1;
+//   boardData.addNewBoard(newBoard)
+//     .then(() => {
+//       $('#exampleModal').modal('hide');
+//       // eslint-disable-next-line no-use-before-define
+//       boardsComponent(uid);
+//     })
+//     .catch((error) => console.error(error));
+// };
 
 // // FUNCTION TO ADD NEW PIN TO ARRAY FROM PINS.JSON
 
@@ -41,13 +41,14 @@ const addNewBoard = (e) => {
 // const addNewPin = (e) => {
 //   e.stopImmediatePropagation();
 //   const { uid } = firebase.auth().currentUser;
+//   const assignToBoard = $(e.target).parent().attr('id');
 //   const newPin = {
 //     id: `pin${pinCounter}`,
 //     name: $('#pin-name').val(),
 //     imageURL: $('#pin-image-url').val(),
 //     siteURL: $('#pin-site-url').val(),
 //     boardDescription: $('#pin-description').val(),
-//     boardID: "",
+//     boardID: `${assigntToBoard}`,
 //   };
 //   pinCounter += 1;
 //   pinData.addNewPin(newPin)
@@ -112,7 +113,7 @@ const boardsComponent = (uid) => {
       // eslint-disable-next-line no-use-before-define
       $('#boards').on('click', '.delete-board', deleteBoardAndPins);
       // eslint-disable-next-line no-use-before-define
-      $('#boards').on('click', '#add-new-board', addNewBoard);
+      // $('#boards').on('click', '#add-new-board', addNewBoard);
       // eslint-disable-next-line no-use-before-define
       $('#big-board-view').on('click', '.delete-pin', deletePinFromBoard);
       // $('#boards').on('click', '#add-new-pin', addNewPin);
