@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Pinterest/title>
+  <title>Pinterest</title>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -24,7 +24,78 @@
 
   <div id="auth"></div>
   <div id="home"></div>
+  
   <div id="boards" class="hide"></div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New Board</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="board-name">Name</label>
+              <input type="text" class="form-control" id="board-name" placeholder="Enter Name">
+            </div>
+            <div class="form-group">
+              <label for="board-image-url">Image Url</label>
+              <input type="text" class="form-control" id="board-image-url" placeholder="Enter Image Url">
+            </div>
+            <div class="form-group">
+              <label for="board-description">Description</label>
+              <input type="text" class="form-control" id="board-description" placeholder="Enter Description">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="add-new-board">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div id="big-board-view"></div>
+    <div class="modal fade" id="examplePinModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="examplePinModalLabel">New Pin</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="pin-name">Name</label>
+                <input type="text" class="form-control" id="pin-name" placeholder="Enter Name">
+              </div>
+              <div class="form-group">
+                <label for="pin-image-url">Image Url</label>
+                <input type="text" class="form-control" id="pin-image-url" placeholder="Enter Image Url">
+              </div>
+              <div class="form-group">
+                <label for="pin-site-url">Site Url</label>
+                <input type="text" class="form-control" id="pin-site-url" placeholder="Enter Site Url">
+              </div>
+              <div class="form-group">
+                <label for="pin-description">Description</label>
+                <input type="text" class="form-control" id="pin-description" placeholder="Enter Description">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="add-new-pin">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
 </body>
 </html>

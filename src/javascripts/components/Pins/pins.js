@@ -6,9 +6,14 @@ import pinData from '../../helpers/data/pinData';
 const boardsToHide = $('#boards');
 
 const createPinsOnBoard = (singleBoard) => {
-  let bigBoardString = `<div class="big-board-title card text-center" id="big-${singleBoard}">
-      <h2>${singleBoard}</h2><button class="close d-flex justify-content-end" style="color:black;">X</button>
-      </div>`;
+  let bigBoardString = `
+    <div class="big-board-title card text-center" id="${singleBoard}">
+        <h2>${singleBoard}</h2>
+        <button class="close d-flex justify-content-end" style="color:black;">X</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#examplePinModal">
+          Add Pin
+        </button>
+    </div>`;
   bigBoardString += '<div id="pinned-cards" class="d-flex flex-wrap">';
   pinData.getPinByBoardId(singleBoard)
     .then((pins) => {
@@ -19,6 +24,7 @@ const createPinsOnBoard = (singleBoard) => {
             <img src="${pin.imageURL}" class="card-img-top" alt="..."/>
             <h5 class="card-title" id="pin">${pin.name}</h5>
             <p>${pin.description}</p>
+            <a href="#${pin.siteURL}" class="btn btn-info" role="button">Link</a>
             <button class="btn btn-danger delete-pin" data-boardID="${pin.boardID}" id="${pin.id}">Remove Pin</button>
           </div>`;
       });
@@ -27,6 +33,5 @@ const createPinsOnBoard = (singleBoard) => {
     })
     .catch((error) => console.error(error));
 };
-
 
 export default { createPinsOnBoard };

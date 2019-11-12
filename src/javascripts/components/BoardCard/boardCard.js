@@ -5,8 +5,8 @@ const createBoard = (board) => {
   let domString = '';
   domString += `
   <div class="card col-4 boardCard">
-    <img src= class="card-img-top" alt="...">
-    <div class="card-body">
+  <div class="card-body">
+      <img src="${board.imageURL}" class="card-img-top" alt="..."/>
       <h5 class="card-title">${board.name}</h5>
       <p>${board.boardDescription}
       <button class="pin-button" id="${board.id}">View Pins</button>
