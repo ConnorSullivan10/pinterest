@@ -25,6 +25,7 @@ const createPinsOnBoard = (singleBoard) => {
             <h5 class="card-title" id="pin">${pin.name}</h5>
             <p>${pin.description}</p>
             <a href="#${pin.siteURL}" class="btn btn-info" role="button">Link</a>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Switch Board<</button>
             <button class="btn btn-danger delete-pin" data-boardID="${pin.boardID}" id="${pin.id}">Remove Pin</button>
           </div>`;
       });
