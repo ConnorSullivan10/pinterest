@@ -8,6 +8,20 @@ import boardData from '../../helpers/data/boardData';
 
 const boardsToHide = $('#boards');
 
+const buildDropdownSelection = () => new Promise((resolve, reject) => {
+  const { uid } = firebase.auth().currentUser;
+  boardData.getBoardByUid(uid)
+    .then((boards) => {
+      let bigBoardString = '';
+      boards.forEach((board) => {
+        bigBoardString += `<a class="dropdown-item" href="#" data-boardID="${board.id}">${board.name}</a>`;
+        console.log(bigBoardString);
+      });
+      resolve(bigBoardString);
+    })
+    .catch((error) => reject(error));
+});
+
 const createPinsOnBoard = (singleBoard) => {
   let bigBoardString = `
     <div class="big-board-title card text-center" id="${singleBoard}">
@@ -30,23 +44,22 @@ const createPinsOnBoard = (singleBoard) => {
             <a href="#${pin.siteURL}" class="btn btn-info" role="button">Link</a>
             <button class="btn btn-danger delete-pin" data-boardID="${pin.boardID}" id="${pin.id}">Remove Pin</button>
             <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" data-boardID="${pin.boardID} type="button" id="dropdownMenuButton-${pin.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <button class="btn btn-secondary dropdown-toggle" data-boardID="${pin.boardID} type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Change Board
               </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" data-boardID="${pin.boardID} id="dropdownMenuButton-${pin.id}">
               `;
-        const { uid } = firebase.auth().currentUser;
-        boardData.getBoardByUid(uid)
-          .then((boards) => {
-            boards.forEach((board) => {
-              bigBoardString += `<a class="dropdown-item" href="#" data-boardID="${board.id}">${board.name}</a>`;
-            });
+        buildDropdownSelection()
+          .then((resolve) => {
+            bigBoardString += resolve;
+            bigBoardString += '</div></div></div>';
           });
-        bigBoardString += '</div></div></div></div>';
-        utilities.printToDom('big-board-view', bigBoardString);
-      })
-        .catch((error) => console.error(error));
-    });
+      });
+      bigBoardString += '</div>';
+      console.log('helloworld', bigBoardString);
+      utilities.printToDom('big-board-view', bigBoardString);
+    })
+    .catch((error) => console.error(error));
 };
 
 export default { createPinsOnBoard };
