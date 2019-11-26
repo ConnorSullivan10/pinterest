@@ -86,10 +86,10 @@ const deleteBoardAndPins = (e) => {
 // REASSIGNS PINS TO NEW BOARD
 
 const updatePinBoard = (e) => {
-  const pinId = e.target.parent().id.split('dropdownMenuButton-');
+  const pinId = e.target.parentNode.id.split('dropdownMenuButton-');
   console.log(pinId);
   const newBoardId = e.target.dataset.id;
-  const boardId = e.target.parent().dataset.id;
+  const boardId = e.target.parentNode.dataset.boardid;
   pinData.changePinBoard(pinId, newBoardId).then(() => {
     pinPrinter.createPinsOnBoard(boardId);
   });
