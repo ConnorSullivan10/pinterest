@@ -23,8 +23,8 @@ const updatePinBoard = (pinId, updatedPin) => axios.put(`${baseUrl}/pins/${pinId
 
 const changePinBoard = (pinId, newBoardId) => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/pins/${pinId}.json`)
-    .then((result) => {
-      const pinObject = result.data;
+    .then((response) => {
+      const pinObject = response.data;
       pinObject.boardID = newBoardId;
       updatePinBoard(pinId, pinObject);
       resolve();
