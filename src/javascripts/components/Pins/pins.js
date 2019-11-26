@@ -40,7 +40,6 @@ const createPinsOnBoard = (singleBoard) => {
     .then((pins) => {
       boardsToHide.empty();
       pins.forEach((pin) => {
-        console.log(boardSelections);
         bigBoardString += `
         <div class="card col-4 pinCard card-body"  id="${pin.id}">
         <img src="${pin.imageURL}" class="card-img-top" alt="..."/>

@@ -63,7 +63,6 @@ const deletePinFromBoard = (e) => {
   pinData.deletePin(e.target.id)
     .then(() => {
     // eslint-disable-next-line no-use-before-define
-      console.log(e.target);
       pinPrinter.createPinsOnBoard(e.target.dataset.boardid);
     })
     .catch((error) => console.error(error));
@@ -75,8 +74,6 @@ const deleteBoardAndPins = (e) => {
   pinData.deletePinByBoardId(e.target.id);
   boardData.deleteBoard(e.target.id)
     .then(() => {
-    // eslint-disable-next-line no-use-before-define
-      console.log(e.target);
       // eslint-disable-next-line no-use-before-define
       boardsComponent(uid);
     })
