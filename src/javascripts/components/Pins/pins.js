@@ -14,7 +14,7 @@ const buildDropdownSelection = () => new Promise((resolve, reject) => {
   boardData.getBoardByUid(uid)
     .then((boards) => {
       boards.forEach((board) => {
-        bigBoardString += `<a class="dropdown-item" href="#" data-boardID="${board.id}">${board.name}</a>`;
+        bigBoardString += `<a class="dropdown-item" href="#" id="${board.id}">${board.name}</a>`;
       });
       resolve(bigBoardString);
     })
@@ -36,8 +36,9 @@ const createPinsOnBoard = (singleBoard) => {
   </button>
   </div>`;
   bigBoardString += '<div id="pinned-cards" class="d-flex flex-wrap">';
-  pinData.getPinByBoardId(singleBoard)
+  return pinData.getPinByBoardId(singleBoard)
     .then((pins) => {
+      console.log(pins);
       boardsToHide.empty();
       pins.forEach((pin) => {
         bigBoardString += `
@@ -51,7 +52,7 @@ const createPinsOnBoard = (singleBoard) => {
         <button class="btn btn-secondary dropdown-toggle" data-boardID="${pin.boardID} type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Change Board
         </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" data-boardID="${pin.boardID} id="dropdownMenuButton-${pin.id}">
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" data-boardid="${pin.boardID}" id="dropdownMenuButton-${pin.id}">
         ${boardSelections}</div></div></div>
         `;
       });
