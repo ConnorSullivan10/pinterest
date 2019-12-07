@@ -98,14 +98,14 @@ const boardsComponent = (uid) => {
   boardData.getBoardByUid(uid)
     .then((boards) => {
       let domString = '';
-      domString += '<h1>BOARDS</h1>';
-      domString += `<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+      domString += '<h1 class="text-center">BOARDS</h1>';
+      domString += `<div class="text-center"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
     Add Board
-    </button>`;
-      domString += '<div id="board-container" class="d-flex flex-wrap">';
+    </button></div>`;
+      domString += '<div id="board-container" class="d-flex flex-wrap text-center">';
       boards.forEach((board) => {
         domString += boardCard.createBoard(board);
-        domString += `<button class="btn btn-danger delete-board" data-boardID="${board.id}" id="${board.id}">Remove Board</button>`;
+        domString += `<button class="btn btn-danger delete-board" data-boardID="${board.id}" id="${board.id}">Remove Board</button></div>`;
       });
       domString += '</div>';
       utilities.printToDom('boards', domString);

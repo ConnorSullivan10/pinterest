@@ -30,11 +30,12 @@ const createPinsOnBoard = (singleBoard) => {
   let bigBoardString = `
   <div class="big-board-title card text-center" id="${singleBoard}">
   <h2>${singleBoard}</h2>
+  </div>
   <button class="close d-flex justify-content-end" style="color:black;">X</button>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#examplePinModal">
+  <div class="text-center"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#examplePinModal">
   Add Pin
-  </button>
-  </div>`;
+  </button></div>
+  `;
   bigBoardString += '<div id="pinned-cards" class="d-flex flex-wrap">';
   return pinData.getPinByBoardId(singleBoard)
     .then((pins) => {
