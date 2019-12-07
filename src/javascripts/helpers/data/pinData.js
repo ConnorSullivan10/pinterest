@@ -19,6 +19,19 @@ const getPinByBoardId = (boardID) => new Promise((resolve, reject) => {
 
 const addNewPin = (newPin) => axios.post(`${baseUrl}/pins.json`, newPin);
 
+const updatePinBoard = (pinId, updatedPin) => axios.put(`${baseUrl}/pins/${pinId}.json`, updatedPin);
+
+const changePinBoard = (pinId, newBoardId) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/pins/${pinId}.json`)
+    .then((response) => {
+      const pinObject = response.data;
+      pinObject.boardID = newBoardId;
+      updatePinBoard(pinId, pinObject);
+      resolve();
+    })
+    .catch((error) => reject(error));
+});
+
 const deletePin = (id) => axios.delete(`${baseUrl}/pins/${id}.json`);
 
 const deletePinByBoardId = (boardID) => {
@@ -35,4 +48,5 @@ export default {
   addNewPin,
   deletePin,
   deletePinByBoardId,
+  changePinBoard,
 };

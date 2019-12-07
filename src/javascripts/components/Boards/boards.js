@@ -63,7 +63,6 @@ const deletePinFromBoard = (e) => {
   pinData.deletePin(e.target.id)
     .then(() => {
     // eslint-disable-next-line no-use-before-define
-      console.log(e.target);
       pinPrinter.createPinsOnBoard(e.target.dataset.boardid);
     })
     .catch((error) => console.error(error));
@@ -75,12 +74,23 @@ const deleteBoardAndPins = (e) => {
   pinData.deletePinByBoardId(e.target.id);
   boardData.deleteBoard(e.target.id)
     .then(() => {
-    // eslint-disable-next-line no-use-before-define
-      console.log(e.target);
       // eslint-disable-next-line no-use-before-define
       boardsComponent(uid);
     })
     .catch((error) => console.error(error));
+};
+
+// REASSIGNS PINS TO NEW BOARD
+
+const updatePinBoard = (e) => {
+  const pinId = e.target.parentNode.id.split('dropdownMenuButton-')[1];
+  const newBoardId = e.target.id;
+  const boardId = e.target.parentNode.dataset.boardid;
+  pinData.changePinBoard(pinId, newBoardId).then(() => {
+    pinPrinter.createPinsOnBoard(boardId).then(() => {
+      $(`#${pinId}`).hide();
+    });
+  });
 };
 
 // PRINTS MAIN BOARDS & EVENT LISTENER FOR BIG CARD, DELETE-PIN BUTTON,
@@ -108,6 +118,7 @@ const boardsComponent = (uid) => {
       // eslint-disable-next-line no-use-before-define
       $('#big-board-view').on('click', '.delete-pin', deletePinFromBoard);
       $(document.body).on('click', '#add-new-pin', addNewPin);
+      $('#big-board-view').on('click', '.dropdown-item', updatePinBoard);
       $('#big-board-view').on('click', '.close', () => {
         $('#big-board-view').empty();
         boardsComponent(uid);
