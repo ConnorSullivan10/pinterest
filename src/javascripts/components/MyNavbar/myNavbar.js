@@ -13,8 +13,7 @@ const logoutEvent = () => {
     firebase.auth().signOut()
       .then(() => {
         // authDiv.classList.add('hide');
-        // logoutButton.classList.add('hide');
-        // boardsDiv.classList.add('hide');
+        $('#boards').addClass('hide');
       }).catch((err) => console.error('you still logged in', err));
   });
 };

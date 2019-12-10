@@ -98,14 +98,14 @@ const boardsComponent = (uid) => {
   boardData.getBoardByUid(uid)
     .then((boards) => {
       let domString = '';
-      domString += '<h1>BOARDS</h1>';
-      domString += `<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+      domString += '<h1 class="text-center">Boards</h1>';
+      domString += `<div class="text-center"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
     Add Board
-    </button>`;
-      domString += '<div id="board-container" class="d-flex flex-wrap">';
+    </button></div>`;
+      domString += '<div id="board-container" class="d-flex flex-wrap text-center">';
       boards.forEach((board) => {
         domString += boardCard.createBoard(board);
-        domString += `<button class="btn btn-danger delete-board" data-boardID="${board.id}" id="${board.id}">Remove Board</button>`;
+        domString += `<button class="btn btn-danger delete-board" data-boardID="${board.id}" id="${board.id}">Remove Board</button></div>`;
       });
       domString += '</div>';
       utilities.printToDom('boards', domString);
@@ -119,7 +119,7 @@ const boardsComponent = (uid) => {
       $('#big-board-view').on('click', '.delete-pin', deletePinFromBoard);
       $(document.body).on('click', '#add-new-pin', addNewPin);
       $('#big-board-view').on('click', '.dropdown-item', updatePinBoard);
-      $('#big-board-view').on('click', '.close', () => {
+      $('#big-board-view').on('click', '.close-board', () => {
         $('#big-board-view').empty();
         boardsComponent(uid);
       });

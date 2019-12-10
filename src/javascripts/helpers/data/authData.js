@@ -21,6 +21,8 @@ const checkLoginStatus = () => {
       authDiv.removeClass('hide');
       homeDiv.removeClass('hide');
       boardsDiv.addClass('hide');
+      boardsDiv.empty();
+      $('#big-board-view').empty();
       logoutNavbar.addClass('hide');
     }
   });
