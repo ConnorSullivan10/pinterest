@@ -1,4 +1,5 @@
 import './pins.scss';
+import 'bootstrap';
 import $ from 'jquery';
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -28,13 +29,15 @@ const createPinsOnBoard = (singleBoard) => {
       boardSelections = resolve;
     });
   let bigBoardString = `
-  <div class="big-board-title card text-center" id="${singleBoard}">
-  <h2>${singleBoard}</h2>
+  <h1 class="big-board-title text-center" id="${singleBoard}"></h1>
+  <div class="text-center">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#examplePinModal">
+      Add Pin
+    </button>
+    <button type="button" class="btn btn-danger close-board">
+      Back To Boards
+    </button>
   </div>
-  <button class="close d-flex justify-content-end" style="color:black;">X</button>
-  <div class="text-center"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#examplePinModal">
-  Add Pin
-  </button></div>
   `;
   bigBoardString += '<div id="pinned-cards" class="d-flex flex-wrap">';
   return pinData.getPinByBoardId(singleBoard)

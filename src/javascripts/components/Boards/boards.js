@@ -98,7 +98,7 @@ const boardsComponent = (uid) => {
   boardData.getBoardByUid(uid)
     .then((boards) => {
       let domString = '';
-      domString += '<h1 class="text-center">BOARDS</h1>';
+      domString += '<h1 class="text-center">Boards</h1>';
       domString += `<div class="text-center"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
     Add Board
     </button></div>`;
@@ -119,7 +119,7 @@ const boardsComponent = (uid) => {
       $('#big-board-view').on('click', '.delete-pin', deletePinFromBoard);
       $(document.body).on('click', '#add-new-pin', addNewPin);
       $('#big-board-view').on('click', '.dropdown-item', updatePinBoard);
-      $('#big-board-view').on('click', '.close', () => {
+      $('#big-board-view').on('click', '.close-board', () => {
         $('#big-board-view').empty();
         boardsComponent(uid);
       });
