@@ -7,17 +7,21 @@
 4. Webpack: For creation of modules
 
 ## Description
-This application is the foundation for a Pinterest-like application that we will be working on for the remainder of the semester. Currently this application incorporates Google Authentication via Firebase to allow users to login with their existing Google account.
+This application mimics a Pinterest-like application that is oriented around guitar/musical gear. It incorporates Google Authentication via Firebase to allow users to login store/modify data from firebase using CRUD elements,linked to their pins/boards and data connected with their authenticated Google login account.
 
 ## Screenshots
 
-![Pinterest Preview 1](https://raw.githubusercontent.com/ConnorSullivan10/pinterest/master/screenshots/pinterestPreview1.PNG)
+![Pinterest Preview 1]()
 
-![Pinterest Preview 2](https://raw.githubusercontent.com/ConnorSullivan10/pinterest/master/screenshots/pinterestPreview2.PNG)
+![Pinterest Preview 2]()
+
+![Pinterest Preview 3]()
+
+![Pinterest Preview 4]()
+
+![Pinterest Preview 5]()
 
 ## How to run
 1. Clone down this project.
-2. Go to: `https://www.npmjs.com/package/http-server` and install "http-server".  
-2. Navigate to the project folder in command line interface and type: `http-server -p 8888`  
-3. This will show at: `http://localhost:8888` in your internet browser.  
+2. Navigate to the following deployed link in your browser: `https://pinterest-18ecc.firebaseapp.com/`
 
